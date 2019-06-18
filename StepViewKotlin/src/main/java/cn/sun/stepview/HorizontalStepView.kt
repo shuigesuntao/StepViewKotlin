@@ -23,33 +23,13 @@ class HorizontalStepView @JvmOverloads constructor(
     private var mStepBeanList: List<StepBean> = ArrayList()
     private var mUnComplectedTextColor = Color.parseColor("#A3E0D9")//定义默认未完成文字的颜色
     private var mComplectedTextColor = Color.WHITE//定义默认完成文字的颜色
-    private var mTextSize = 14//
+    private var mTextSize = 14
 
     init{
-//        val linearLayout = LinearLayout(context)
-//                .apply {
-//                    orientation = VERTICAL
-//                    layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
-//                }
-//        mTextContainer = RelativeLayout(context)
-//                .apply {
-//                    layoutParams = RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT)
-//                }
-//        mStepsViewIndicator = HorizontalStepsViewIndicator(context)
-//                .apply {
-//                    layoutParams = LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT)
-//                            .apply {
-//                                setMargins(0, TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4f, resources.displayMetrics).toInt(),0,0)
-//                            }
-//                }
         val rootView = LayoutInflater.from(getContext()).inflate(R.layout.widget_horizontal_stepsview_kotlin, this)
         mStepsViewIndicator = rootView.findViewById(R.id.steps_indicator_kt)
         mStepsViewIndicator.setOnDrawListener(this)
         mTextContainer = rootView.findViewById(R.id.rl_text_container_kt)
-//        linearLayout.addView(mStepsViewIndicator)
-//        linearLayout.addView(mTextContainer)
-
-
     }
 
     /**
@@ -128,7 +108,9 @@ class HorizontalStepView @JvmOverloads constructor(
         return this
     }
 
-    fun notifyDataChanged(){
+    fun notifyDataChanged(stepsBeanList: List<StepBean>){
+        mStepBeanList = stepsBeanList
+        mStepsViewIndicator.setStepNum(mStepBeanList)
         mStepsViewIndicator.notifyDataSetChanged()
     }
 
