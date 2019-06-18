@@ -128,6 +128,10 @@ class HorizontalStepView @JvmOverloads constructor(
         return this
     }
 
+    fun notifyDataChanged(){
+        mStepsViewIndicator.notifyDataSetChanged()
+    }
+
     override fun onDrawIndicator() {
         mTextContainer.removeAllViews()
         val complectedXPosition = mStepsViewIndicator.getCircleCenterPointPositionList()

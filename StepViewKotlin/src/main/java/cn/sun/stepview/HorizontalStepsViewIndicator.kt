@@ -92,6 +92,10 @@ class HorizontalStepsViewIndicator @JvmOverloads constructor(
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
+        notifyDataSetChanged()
+    }
+
+    fun notifyDataSetChanged(){
         //获取中间的高度,目的是为了让该view绘制的线和圆在该view垂直居中
         mCenterY = 0.5f * height
         //获取左上方Y的位置，获取该点的意义是为了方便画矩形左上的Y位置
